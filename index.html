@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Experience premium wood-fired sourdough pizzas, slow-roasted meats, and artisanal sides crafted with passion and fire at Pepper by Pats in Kandy, Sri Lanka.">
+  <title>Pepper by Pats | Artisanal Wood-Fired Pizza in Kandy</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-light">
+
+  <!-- Navigation Bar -->
+  <header class="main-header" id="main-header">
+    <div class="nav-container">
+      <a href="#" class="logo-link" id="logo-nav">
+        <span class="logo-text">PEPPER BY PATS</span>
+      </a>
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li><a href="#story" class="nav-link">OUR STORY</a></li>
+          <li><a href="#menu" class="nav-link">MENU</a></li>
+          <li><a href="#offers" class="nav-link">OFFERS</a></li>
+          <li><a href="#locations" class="nav-link">LOCATIONS</a></li>
+        </ul>
+        <a href="#menu" class="nav-cta-btn" id="nav-cta-btn">ORDER NOW</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="hero-bg-container">
+      <img src="assets/hero_background.png" alt="Wood-fired oven glowing embers" class="hero-bg-image" id="hero-bg-img">
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1 class="hero-title" id="hero-heading">EXPERIENCE THE ART OF FIERY FLAVOURS</h1>
+      <p class="hero-subtitle" id="hero-subheading">Hand-stretched sourdough pizzas, slow-roasted meats, and artisanal sides crafted with passion and fire.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary" id="hero-btn-menu">VIEW MENU</a>
+        <a href="#story" class="btn btn-outline" id="hero-btn-story">OUR STORY</a>
+      </div>
+    </div>
+    <div class="scroll-indicator" id="scroll-indicator">
+      <span class="scroll-text">SCROLL TO HEARTH</span>
+      <div class="scroll-arrow"></div>
+    </div>
+  </section>
+
+  <!-- Intro: Crafted with Fire & Passion Section -->
+  <section class="intro-section section-padding scroll-section" id="intro" data-theme="light">
+    <div class="container grid-2">
+      <div class="intro-text-block reveal-left">
+        <span class="section-tagline">AUTHENTIC COOKING</span>
+        <h2 class="section-title">CRAFTED WITH FIRE &amp; PASSION</h2>
+        <p class="section-desc">At Pepper by Pats, we believe that great food starts with simple, high-quality ingredients and the ancient art of wood-fire cooking. Our sourdough is naturally fermented for 48 hours, resulting in a light, airy crust with a signature char.</p>
+        <p class="section-desc">Combined with our house-made sauces and locally sourced toppings, every bite is a celebration of flavor, smoke, and texture.</p>
+      </div>
+      <div class="intro-image-block reveal-right">
+        <div class="image-wrapper rounded-lg">
+          <img src="assets/spicy_pat_pizza.png" alt="Slicing fresh sourdough pizza" class="parallax-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Pick Me Pizza Wheel Section -->
+  <section class="pickme-section section-padding scroll-section" id="pickme" data-theme="dark">
+    <div class="container grid-2 align-center">
+      <div class="wheel-visual-block reveal-left">
+        <div class="wheel-outer-container">
+          <div class="wheel-pointer" id="wheel-pointer"></div>
+          <div class="wheel-canvas-container">
+            <canvas id="pizza-wheel" width="450" height="450"></canvas>
+          </div>
+          <button class="spin-btn" id="spin-btn">SPIN NOW</button>
+        </div>
+      </div>
+      <div class="wheel-text-block reveal-right">
+        <span class="section-tagline color-amber">PICK ME</span>
+        <h2 class="section-title color-white">CAN'T DECIDE?<br>LET US PICK FOR YOU!</h2>
+        <p class="section-desc color-gray">Click the button to spin the pizza wheel and let fate decide your next slice! Spin and unlock a special discount code for your order.</p>
+        
+        <!-- Selection Popup Result Inside the Card -->
+        <div class="wheel-result-card" id="wheel-result-card">
+          <div class="result-card-inner">
+            <div class="result-header">
+              <h4 class="result-title" id="result-pizza-name">Spinning...</h4>
+              <span class="result-price" id="result-pizza-price">Rs. 0</span>
+            </div>
+            <p class="result-desc" id="result-pizza-desc">Your pizza recommendation will appear here.</p>
+            <!--
+            <div class="coupon-box" id="coupon-box">
+              <span class="coupon-label">YOUR DISCOUNT CODE:</span>
+              <div class="coupon-row">
+                <code class="coupon-code" id="coupon-code-text">FIRSTSLICE</code>
+                <button class="copy-coupon-btn" id="copy-coupon-btn">COPY</button>
+              </div>
+            </div>
+            -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Signature Creations Section -->
+  <section class="signature-section section-padding scroll-section" id="signature" data-theme="light">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tagline">CHEF'S SELECTIONS</span>
+        <h2 class="section-title">SIGNATURE CREATIONS</h2>
+        <p class="section-lead">A selection of our most popular wood-fired pizzas, fresh from the oven.</p>
+      </div>
+      <div class="grid-3 card-grid" id="signature-grid">
+        <!-- Card 1 -->
+        <div class="card-reveal">
+          <div class="pizza-card">
+            <div class="card-image-container">
+              <img src="assets/spicy_pat_pizza.png" alt="The Spicy Pat pizza" class="card-img">
+              <span class="card-tag">SPICY</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">THE SPICY PAT</h3>
+              <p class="card-desc">Sourdough crust, spicy salami, nduja, fresh mozzarella, hot honey, and fresh basil.</p>
+              <div class="card-footer-row">
+                <span class="card-price">Rs. 2,450</span>
+                <a href="#locations" class="card-btn">ORDER NOW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="card-reveal">
+          <div class="pizza-card">
+            <div class="card-image-container">
+              <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Mushroom pizza" class="card-img">
+              <span class="card-tag">VEGETARIAN</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">TRUFFLE MUSHROOM</h3>
+              <p class="card-desc">White base, wild mushrooms, truffle oil, caramelized onions, fresh mozzarella, and arugula.</p>
+              <div class="card-footer-row">
+                <span class="card-price">Rs. 2,750</span>
+                <a href="#locations" class="card-btn">ORDER NOW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div class="card-reveal">
+          <div class="pizza-card">
+            <div class="card-image-container">
+              <img src="assets/margherita_pizza.png" alt="Classic Margherita pizza" class="card-img">
+              <span class="card-tag">CLASSIC</span>
+            </div>
+            <div class="card-body">
+              <h3 class="card-title">CLASSIC MARGHERITA</h3>
+              <p class="card-desc">San Marzano tomato sauce, fresh mozzarella, extra virgin olive oil, and fresh basil.</p>
+              <div class="card-footer-row">
+                <span class="card-price">Rs. 1,950</span>
+                <a href="#locations" class="card-btn">ORDER NOW</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center mt-48">
+        <a href="#menu" class="btn btn-primary">VIEW FULL MENU</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Story Section -->
+  <section class="story-section section-padding scroll-section" id="story" data-theme="light">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tagline">OUR STORY</span>
+        <h2 class="section-title">BORN FROM FIRE, CRAFTED WITH PASSION</h2>
+        <p class="section-lead">The journey of bringing authentic culinary warmth to the city of Kandy.</p>
+      </div>
+      
+      <!-- Story Block 1 -->
+      <div class="grid-2 align-center story-row">
+        <div class="story-text reveal-left">
+          <h3 class="story-heading">FROM A SPARK TO A FLAME</h3>
+          <p class="section-desc">Pepper by Pats started with a simple belief: that wood-fired cooking has an unmatched ability to bring out the deepest, most complex flavors in food. Our journey began in Kandy, driven by the desire to bring authentic, artisanal pizzas to our local community.</p>
+          <p class="section-desc">Every ingredient is chosen with purpose, and every recipe is crafted with care. Our signature 48-hour fermented sourdough is the foundation of everything we do, creating a crust that is both light and full of character.</p>
+        </div>
+        <div class="story-image reveal-right">
+          <div class="image-wrapper rounded-lg">
+            <img src="assets/margherita_pizza.png" alt="Artisanal pizza ingredients" class="parallax-img">
+          </div>
+        </div>
+      </div>
+
+      <!-- Story Block 2 -->
+      <div class="grid-2 align-center story-row invert-grid">
+        <div class="story-image reveal-left">
+          <div class="image-wrapper rounded-lg">
+            <img src="assets/hero_background.png" alt="Wood-fired oven close up" class="parallax-img">
+          </div>
+        </div>
+        <div class="story-text reveal-right">
+          <h3 class="story-heading">THE SECRET IN THE SMOKE</h3>
+          <p class="section-desc">Our wood-fired oven is the beating heart of our kitchen. Burning at temperatures over 450°C, it chars our pizzas in under 90 seconds, sealing in moisture and creating our signature smoky flavor.</p>
+          <p class="section-desc">We use a curated blend of local hardwoods to impart a unique aroma that defines the Pepper by Pats experience, blending traditional techniques with modern culinary finesse.</p>
+        </div>
+      </div>
+
+      <!-- Meet the Craftsmen -->
+      <div class="craftsmen-section mt-80">
+        <h3 class="story-heading text-center mb-16">MEET THE CRAFTSMEN</h3>
+        <p class="section-desc text-center max-w-600 mx-auto mb-48">Led by Pat, our team of passionate chefs is dedicated to preserving the art of traditional cooking. From hand-stretching the dough to monitoring the flames, we pour our hearts into every dish we serve.</p>
+        <div class="grid-2 chef-grid card-grid">
+          <!-- Chef 1 -->
+          <div class="card-reveal">
+            <div class="chef-card">
+              <div class="chef-image-container">
+                <img src="assets/chef_pat.png" alt="Head Chef Pat" class="chef-img">
+              </div>
+              <div class="chef-info">
+                <h4 class="chef-name">PAT</h4>
+                <span class="chef-title">Founder &amp; Head Chef</span>
+              </div>
+            </div>
+          </div>
+          <!-- Chef 2 -->
+          <div class="card-reveal">
+            <div class="chef-card">
+              <div class="chef-image-container">
+                <img src="assets/chef_sadin.png" alt="Sous Chef Sadin" class="chef-img">
+              </div>
+              <div class="chef-info">
+                <h4 class="chef-name">SADIN</h4>
+                <span class="chef-title">Sous Chef</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA Box -->
+      <div class="story-cta-box text-center mt-80 rounded-lg reveal-up">
+        <h3 class="cta-box-title">EXPERIENCE THE WARMTH</h3>
+        <p class="cta-box-desc">Join us for a dining experience that is both intimate and unforgettable. Book your table today.</p>
+        <a href="#locations" class="btn btn-primary">BOOK A TABLE</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Complete Menu Section -->
+  <section class="menu-section section-padding scroll-section" id="menu" data-theme="light">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tagline">THE MENU</span>
+        <h2 class="section-title">CRAFTED WITH PASSION, FIRED TO PERFECTION</h2>
+        <p class="section-lead">Explore our selection of pizzas, sides, desserts, and beverages.</p>
+      </div>
+
+      <!-- Filter and View Controls -->
+      <div class="menu-controls-bar">
+        <div class="menu-tabs-wrapper">
+          <ul class="menu-tabs" id="menu-tabs">
+            <li class="tab-item active" data-filter="all">ALL</li>
+            <li class="tab-item" data-filter="pizzas">WOOD-FIRED PIZZAS</li>
+            <li class="tab-item" data-filter="sides">ARTISANAL SIDES</li>
+            <li class="tab-item" data-filter="desserts">DESSERTS</li>
+            <li class="tab-item" data-filter="beverages">BEVERAGES</li>
+          </ul>
+        </div>
+        
+        <div class="view-toggle-wrapper">
+          <span class="toggle-label">Classic View</span>
+          <button class="view-toggle-btn" id="view-toggle" aria-label="Toggle menu layout view">
+            <span class="toggle-slider"></span>
+          </button>
+          <span class="toggle-label active">Photo View</span>
+        </div>
+      </div>
+
+      <!-- Photo Grid View -->
+      <div class="menu-view-container active-view" id="menu-photo-view">
+        <div class="grid-3 card-grid" id="menu-photo-grid">
+          <!-- Pizzas -->
+          <div class="menu-item-card" data-category="pizzas">
+            <div class="item-img-wrapper">
+              <img src="assets/margherita_pizza.png" alt="Classic Margherita" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Classic Margherita</h4>
+                <span class="item-card-price">Rs. 1,950</span>
+              </div>
+              <p class="item-card-desc">San Marzano tomato sauce, fresh mozzarella, extra virgin olive oil, and fresh basil.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="pizzas">
+            <div class="item-img-wrapper">
+              <img src="assets/spicy_pat_pizza.png" alt="The Spicy Pat" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">The Spicy Pat</h4>
+                <span class="item-card-price">Rs. 2,450</span>
+              </div>
+              <p class="item-card-desc">Sourdough crust, spicy salami, nduja, fresh mozzarella, hot honey, and fresh basil.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="pizzas">
+            <div class="item-img-wrapper">
+              <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Mushroom" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Truffle Mushroom</h4>
+                <span class="item-card-price">Rs. 2,750</span>
+              </div>
+              <p class="item-card-desc">White base, wild mushrooms, truffle oil, caramelized onions, fresh mozzarella, and arugula.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="pizzas">
+            <div class="item-img-wrapper">
+              <img src="assets/margherita_pizza.png" alt="Quattro Formaggi" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Quattro Formaggi</h4>
+                <span class="item-card-price">Rs. 2,600</span>
+              </div>
+              <p class="item-card-desc">Mozzarella, gorgonzola, parmesan, and ricotta with a drizzle of local wild honey.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="pizzas">
+            <div class="item-img-wrapper">
+              <img src="assets/spicy_pat_pizza.png" alt="Pepperoni Classic" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Pepperoni Classic</h4>
+                <span class="item-card-price">Rs. 2,300</span>
+              </div>
+              <p class="item-card-desc">Double beef pepperoni, San Marzano tomato sauce, fresh mozzarella, and oregano.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="pizzas">
+            <div class="item-img-wrapper">
+              <img src="assets/hero_background.png" alt="Smoky BBQ Chicken" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Smoky BBQ Chicken</h4>
+                <span class="item-card-price">Rs. 2,250</span>
+              </div>
+              <p class="item-card-desc">Wood-fired chicken, house BBQ sauce, caramelized onions, smoked cheese, and cilantro.</p>
+            </div>
+          </div>
+
+          <!-- Sides -->
+          <div class="menu-item-card" data-category="sides">
+            <div class="item-img-wrapper">
+              <img src="assets/chicken_wings.png" alt="Fire-Roasted Chicken Wings" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Fire-Roasted Chicken Wings</h4>
+                <span class="item-card-price">Rs. 1,450</span>
+              </div>
+              <p class="item-card-desc">Wood-fired wings tossed in a spicy house glaze, served with blue cheese dip.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="sides">
+            <div class="item-img-wrapper">
+              <img src="assets/garlic_sourdough.png" alt="Garlic Sourdough Bread" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Garlic Sourdough Bread</h4>
+                <span class="item-card-price">Rs. 950</span>
+              </div>
+              <p class="item-card-desc">House sourdough garlic bread with melted mozzarella and fresh rosemary.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="sides">
+            <div class="item-img-wrapper">
+              <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Parmesan Fries" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Truffle Parmesan Fries</h4>
+                <span class="item-card-price">Rs. 1,150</span>
+              </div>
+              <p class="item-card-desc">Crispy hand-cut fries tossed in truffle oil, parmesan, and fresh parsley.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="sides">
+            <div class="item-img-wrapper">
+              <img src="assets/hero_background.png" alt="Wood-Fired Vegetables" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Wood-Fired Vegetables</h4>
+                <span class="item-card-price">Rs. 1,250</span>
+              </div>
+              <p class="item-card-desc">Seasonal local vegetables roasted in our wood-fired oven with garlic herb butter.</p>
+            </div>
+          </div>
+
+          <!-- Desserts -->
+          <div class="menu-item-card" data-category="desserts">
+            <div class="item-img-wrapper">
+              <img src="assets/chocolate_cake.png" alt="Chocolate Fudge Cake" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Chocolate Fudge Cake</h4>
+                <span class="item-card-price">Rs. 1,100</span>
+              </div>
+              <p class="item-card-desc">Warm chocolate fudge cake with vanilla ice cream and house chocolate sauce.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="desserts">
+            <div class="item-img-wrapper">
+              <img src="assets/tiramisu.png" alt="Tiramisu" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Tiramisu</h4>
+                <span class="item-card-price">Rs. 1,200</span>
+              </div>
+              <p class="item-card-desc">Classic Italian tiramisu with coffee-soaked ladyfingers and mascarpone cream.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="desserts">
+            <div class="item-img-wrapper">
+              <img src="assets/chocolate_cake.png" alt="Affogato al Caffe" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Affogato al Caffe</h4>
+                <span class="item-card-price">Rs. 850</span>
+              </div>
+              <p class="item-card-desc">Double espresso shot poured over vanilla bean gelato.</p>
+            </div>
+          </div>
+
+          <!-- Beverages -->
+          <div class="menu-item-card" data-category="beverages">
+            <div class="item-img-wrapper">
+              <img src="assets/mojito.png" alt="Passion Fruit Mojito" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Passion Fruit Mojito</h4>
+                <span class="item-card-price">Rs. 850</span>
+              </div>
+              <p class="item-card-desc">Fresh passion fruit, mint, lime, and soda.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="beverages">
+            <div class="item-img-wrapper">
+              <img src="assets/iced_latte.png" alt="Iced Coffee Latte" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Iced Coffee Latte</h4>
+                <span class="item-card-price">Rs. 750</span>
+              </div>
+              <p class="item-card-desc">Double espresso shot with milk and vanilla syrup over ice.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="beverages">
+            <div class="item-img-wrapper">
+              <img src="assets/mojito.png" alt="Peach Iced Tea" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Peach Iced Tea</h4>
+                <span class="item-card-price">Rs. 650</span>
+              </div>
+              <p class="item-card-desc">Brewed black tea infused with peach syrup, served with fresh mint and lemon.</p>
+            </div>
+          </div>
+
+          <div class="menu-item-card" data-category="beverages">
+            <div class="item-img-wrapper">
+              <img src="assets/iced_latte.png" alt="Mineral Water" class="item-img">
+            </div>
+            <div class="item-card-body">
+              <div class="item-card-header">
+                <h4 class="item-card-title">Mineral Water (750ml)</h4>
+                <span class="item-card-price">Rs. 450</span>
+              </div>
+              <p class="item-card-desc">Premium locally sourced spring water, still or sparkling.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Classic Text View -->
+      <div class="menu-view-container" id="menu-classic-view">
+        <div class="grid-2 text-menu-grid">
+          <!-- Left Column -->
+          <div class="text-menu-column">
+            <!-- Pizzas Group -->
+            <div class="menu-group" data-category="pizzas">
+              <h3 class="menu-group-heading">WOOD-FIRED PIZZAS</h3>
+              
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Classic Margherita</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 1,950</span>
+                </div>
+                <p class="classic-item-desc">San Marzano tomato sauce, fresh mozzarella, extra virgin olive oil, and fresh basil.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">The Spicy Pat</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 2,450</span>
+                </div>
+                <p class="classic-item-desc">Sourdough crust, spicy salami, nduja, fresh mozzarella, hot honey, and fresh basil.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Truffle Mushroom</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 2,750</span>
+                </div>
+                <p class="classic-item-desc">White base, wild mushrooms, truffle oil, caramelized onions, fresh mozzarella, and arugula.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Quattro Formaggi</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 2,600</span>
+                </div>
+                <p class="classic-item-desc">Mozzarella, gorgonzola, parmesan, and ricotta with a drizzle of local wild honey.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Pepperoni Classic</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 2,300</span>
+                </div>
+                <p class="classic-item-desc">Double beef pepperoni, San Marzano tomato sauce, fresh mozzarella, and oregano.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Smoky BBQ Chicken</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 2,250</span>
+                </div>
+                <p class="classic-item-desc">Wood-fired chicken, house BBQ sauce, caramelized onions, smoked cheese, and cilantro.</p>
+              </div>
+            </div>
+
+            <!-- Desserts Group -->
+            <div class="menu-group" data-category="desserts">
+              <h3 class="menu-group-heading">DESSERTS</h3>
+              
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Chocolate Fudge Cake</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 1,100</span>
+                </div>
+                <p class="classic-item-desc">Warm chocolate fudge cake with vanilla ice cream and house chocolate sauce.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Tiramisu</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 1,200</span>
+                </div>
+                <p class="classic-item-desc">Classic Italian tiramisu with coffee-soaked ladyfingers and mascarpone cream.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Affogato al Caffe</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 850</span>
+                </div>
+                <p class="classic-item-desc">Double espresso shot poured over vanilla bean gelato.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column -->
+          <div class="text-menu-column">
+            <!-- Sides Group -->
+            <div class="menu-group" data-category="sides">
+              <h3 class="menu-group-heading">ARTISANAL SIDES</h3>
+              
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Fire-Roasted Chicken Wings</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 1,450</span>
+                </div>
+                <p class="classic-item-desc">Wood-fired wings tossed in a spicy house glaze, served with blue cheese dip.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Garlic Sourdough Bread</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 950</span>
+                </div>
+                <p class="classic-item-desc">House sourdough garlic bread with melted mozzarella and fresh rosemary.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Truffle Parmesan Fries</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 1,150</span>
+                </div>
+                <p class="classic-item-desc">Crispy hand-cut fries tossed in truffle oil, parmesan, and fresh parsley.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Wood-Fired Vegetables</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 1,250</span>
+                </div>
+                <p class="classic-item-desc">Seasonal local vegetables roasted in our wood-fired oven with garlic herb butter.</p>
+              </div>
+            </div>
+
+            <!-- Beverages Group -->
+            <div class="menu-group" data-category="beverages">
+              <h3 class="menu-group-heading">BEVERAGES</h3>
+              
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Passion Fruit Mojito</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 850</span>
+                </div>
+                <p class="classic-item-desc">Fresh passion fruit, mint, lime, and soda.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Iced Coffee Latte</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 750</span>
+                </div>
+                <p class="classic-item-desc">Double espresso shot with milk and vanilla syrup over ice.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Peach Iced Tea</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 650</span>
+                </div>
+                <p class="classic-item-desc">Brewed black tea infused with peach syrup, served with fresh mint and lemon.</p>
+              </div>
+
+              <div class="classic-menu-item">
+                <div class="classic-item-row">
+                  <span class="classic-item-title">Mineral Water (750ml)</span>
+                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-price">Rs. 450</span>
+                </div>
+                <p class="classic-item-desc">Premium locally sourced spring water, still or sparkling.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="offers-section section-padding scroll-section" id="offers" data-theme="dark">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tagline color-amber">EXCLUSIVE OFFERS</span>
+        <h2 class="section-title color-white">DELICIOUS DEALS &amp; FIRE-HOT SAVINGS</h2>
+        <p class="section-lead color-gray">Indulge in our custom promotions and curated feast packs.</p>
+      </div>
+
+      <div class="grid-2 card-grid">
+        <!-- Offer 1 -->
+        <div class="card-reveal">
+          <div class="offer-card">
+            <span class="offer-badge">WEEKDAY SPECIAL</span>
+            <h3 class="offer-title">MIDWEEK FEAST</h3>
+            <p class="offer-desc">Get 20% off on all signature wood-fired pizzas every Tuesday and Wednesday between 2:00 PM and 6:00 PM. Perfect for a late lunch or early dinner.</p>
+            <a href="#locations" class="btn btn-primary offer-btn">CLAIM OFFER</a>
+          </div>
+        </div>
+        <!-- Offer 2 -->
+        <div class="card-reveal">
+          <div class="offer-card">
+            <span class="offer-badge">WEEKEND COMBO</span>
+            <h3 class="offer-title">THE FIRE BUNDLE</h3>
+            <p class="offer-desc">Order any two signature pizzas and get a free order of Fire-Roasted Wings and a 1L Peach Iced Tea. Available Friday to Sunday, all day long.</p>
+            <a href="#locations" class="btn btn-primary offer-btn">CLAIM BUNDLE</a>
+          </div>
+        </div>
+        <!-- Offer 3 -->
+        <div class="card-reveal">
+          <div class="offer-card">
+            <span class="offer-badge">NEW USER EXCLUSIVE</span>
+            <h3 class="offer-title">FIRST SLICE FREE</h3>
+            <p class="offer-desc">Sign up for our rewards program and receive a complimentary Classic Margherita pizza on your first order over Rs. 3,500. Code: FIRSTSLICE.</p>
+            <a href="#locations" class="btn btn-primary offer-btn">REDEEM NOW</a>
+          </div>
+        </div>
+        <!-- Offer 4 -->
+        <div class="card-reveal">
+          <div class="offer-card">
+            <span class="offer-badge">HAPPY HOUR</span>
+            <h3 class="offer-title">2-FOR-1 MOJITOS</h3>
+            <p class="offer-desc">Enjoy two of our signature Passion Fruit Mojitos for the price of one. Every day from 5:00 PM to 7:00 PM. Perfect for unwinding after a long day.</p>
+            <a href="#locations" class="btn btn-primary offer-btn">CLAIM OFFER</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Newsletter Box -->
+      <div class="newsletter-box mt-80 rounded-lg text-center reveal-up">
+        <h3 class="newsletter-title">STAY UPDATED WITH FIRE DEALS</h3>
+        <p class="newsletter-desc">Subscribe to our newsletter to receive the latest offers, new menu launches, and exclusive events info straight to your inbox.</p>
+        <form class="newsletter-form" id="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!'); this.reset();">
+          <input type="email" placeholder="ENTER YOUR EMAIL" class="newsletter-input" required aria-label="Email Address">
+          <button type="submit" class="btn btn-primary newsletter-btn">SUBSCRIBE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Locations & Contact Section -->
+  <section class="locations-section section-padding scroll-section" id="locations" data-theme="light">
+    <div class="container">
+      <div class="section-header text-center">
+        <span class="section-tagline">FIND US</span>
+        <h2 class="section-title">OUR LOCATIONS</h2>
+        <p class="section-lead">Find us in the heart of Kandy, or order online to enjoy the fire at home.</p>
+      </div>
+
+      <!-- Contact Info & Map -->
+      <div class="grid-2 align-center locations-map-row reveal-up">
+        <div class="location-details">
+          <h3 class="location-heading">VISIT OUR HEARTH</h3>
+          <div class="info-list">
+            <div class="info-item">
+              <span class="info-icon">📍</span>
+              <div>
+                <strong>Address</strong>
+                <p>45, Temple Road, Kandy</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">🕒</span>
+              <div>
+                <strong>Hours</strong>
+                <p>Mon - Sun: 11:30 AM - 10:30 PM</p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">📞</span>
+              <div>
+                <strong>Phone</strong>
+                <p><a href="tel:+94812234567" class="hover-underline">+94 81 223 4567</a></p>
+              </div>
+            </div>
+            <div class="info-item">
+              <span class="info-icon">✉️</span>
+              <div>
+                <strong>Email</strong>
+                <p><a href="mailto:hello@pepperbypats.lk" class="hover-underline">hello@pepperbypats.lk</a></p>
+              </div>
+            </div>
+          </div>
+          <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-32">GET DIRECTIONS</a>
+        </div>
+        <div class="location-map">
+          <div class="image-wrapper rounded-lg shadow-ambient">
+            <img src="assets/kandy_map.png" alt="Map of Kandy Sri Lanka pointing to Pepper by Pats">
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form-container mt-80 rounded-lg reveal-up">
+        <h3 class="form-heading text-center">GET IN TOUCH</h3>
+        <p class="form-subheading text-center max-w-600 mx-auto">Have a question, feedback, or a large event inquiry? Send us a message and we'll get back to you shortly.</p>
+        <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully! We will contact you soon.'); this.reset();">
+          <div class="form-row grid-2">
+            <div class="form-group">
+              <label for="contact-name">YOUR NAME</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="John Doe" required>
+            </div>
+            <div class="form-group">
+              <label for="contact-email">YOUR EMAIL</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="john@example.com" required>
+            </div>
+          </div>
+          <div class="form-row grid-2">
+            <div class="form-group">
+              <label for="contact-phone">PHONE NUMBER</label>
+              <input type="tel" id="contact-phone" class="form-input" placeholder="+94 77 123 4567">
+            </div>
+            <div class="form-group">
+              <label for="contact-subject">SUBJECT</label>
+              <select id="contact-subject" class="form-input" required>
+                <option value="" disabled selected>Select subject</option>
+                <option value="General Inquiry">General Inquiry</option>
+                <option value="Table Booking">Table Booking</option>
+                <option value="Event Catering">Event Catering</option>
+                <option value="Feedback">Feedback</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="contact-message">YOUR MESSAGE</label>
+            <textarea id="contact-message" class="form-input textarea-input" placeholder="Write your message here..." rows="5" required></textarea>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary form-submit-btn">SEND MESSAGE</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer" id="main-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h4 class="footer-logo">PEPPER BY PATS</h4>
+        <p class="footer-desc">Artisanal wood-fired pizzas, slow-roasted meats, and signature cocktails in the heart of Kandy.</p>
+      </div>
+      <div class="footer-links">
+        <h4 class="footer-heading">QUICK LINKS</h4>
+        <ul class="footer-nav">
+          <li><a href="#story">Our Story</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#locations">Locations</a></li>
+        </ul>
+      </div>
+      <div class="footer-social">
+        <h4 class="footer-heading">FOLLOW US</h4>
+        <div class="social-icons">
+          <a href="#" class="social-icon-link" aria-label="Instagram">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+          </a>
+          <a href="#" class="social-icon-link" aria-label="Facebook">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+          </a>
+          <a href="#" class="social-icon-link" aria-label="TripAdvisor">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom text-center">
+      <p>&copy; 2024 Pepper by Pats. All rights reserved. | <a href="#" class="hover-underline">Privacy Policy</a> | <a href="#" class="hover-underline">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <!-- Animation Libraries (CDN) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+  <!-- Custom Logic JS -->
+  <script src="app.js?v=4"></script>
+</body>
+</html>

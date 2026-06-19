@@ -1,0 +1,12 @@
+# Dependency directories
+node_modules/
+
+# Local configuration / backup files
+pepper_by_pats/
+
+# OS metadata files
+.DS_Store
+Thumbs.db
+
+# IDE settings
+.idea/
