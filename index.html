@@ -1,72 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- Character encoding configuration for Unicode translation -->
   <meta charset="UTF-8">
+  <!-- Viewport scaling configuration for responsive mobile display scaling -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Meta description tag for SEO page summary crawl optimization -->
   <meta name="description" content="Experience premium wood-fired sourdough pizzas, slow-roasted meats, and artisanal sides crafted with passion and fire at Pepper by Pats in Kandy, Sri Lanka.">
+  <!-- Web browser tab title -->
   <title>Pepper by Pats | Artisanal Wood-Fired Pizza in Kandy</title>
-  <!-- Google Fonts -->
+  
+  <!-- Preconnect to Google Fonts domain for faster font asset loading -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Load custom Montserrat (for headings) and Hanken Grotesk (for body copy) typography files -->
   <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  <!-- Stylesheet -->
+  
+  <!-- Core Design System Custom Stylesheet link -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="theme-light">
 
-  <!-- Navigation Bar -->
+  <!-- ==========================================================================
+       Navigation Bar Header (Fixed at the top of the viewport)
+       ========================================================================== -->
   <header class="main-header" id="main-header">
     <div class="nav-container">
+      <!-- Main brand logo anchor link navigating back to the hero section -->
       <a href="#" class="logo-link" id="logo-nav">
         <span class="logo-text">PEPPER BY PATS</span>
       </a>
+      
+      <!-- Hamburger navigation button visible on mobile viewport sizes (screen width < 768px) -->
       <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span> <!-- Hamburger horizontal line 1 -->
+        <span></span> <!-- Hamburger horizontal line 2 -->
+        <span></span> <!-- Hamburger horizontal line 3 -->
       </button>
+      
+      <!-- Main page navigation menu block -->
       <nav class="nav-menu" id="nav-menu">
         <ul class="nav-list">
+          <!-- Standard menu navigation links mapping to specific page anchors -->
           <li><a href="#story" class="nav-link">OUR STORY</a></li>
           <li><a href="#menu" class="nav-link">MENU</a></li>
           <li><a href="#offers" class="nav-link">OFFERS</a></li>
           <li><a href="#locations" class="nav-link">LOCATIONS</a></li>
         </ul>
+        <!-- Header call-to-action button highlighting primary action shortcut -->
         <a href="#menu" class="nav-cta-btn" id="nav-cta-btn">ORDER NOW</a>
       </nav>
     </div>
   </header>
 
-  <!-- Hero Section -->
+  <!-- ==========================================================================
+       Hero Section Banner (Main page entrance area)
+       ========================================================================== -->
   <section class="hero-section" id="hero">
+    <!-- Background layer wrapper handling zoom/parallax transitions -->
     <div class="hero-bg-container">
+      <!-- Wood-fired oven illustration banner image -->
       <img src="assets/hero_background.png" alt="Wood-fired oven glowing embers" class="hero-bg-image" id="hero-bg-img">
+      <!-- Black radial overlay shading layer to optimize text readability -->
       <div class="hero-overlay"></div>
     </div>
+    
+    <!-- Core typography text and CTA buttons container -->
     <div class="hero-content">
       <h1 class="hero-title" id="hero-heading">EXPERIENCE THE ART OF FIERY FLAVOURS</h1>
       <p class="hero-subtitle" id="hero-subheading">Hand-stretched sourdough pizzas, slow-roasted meats, and artisanal sides crafted with passion and fire.</p>
       <div class="hero-actions">
+        <!-- Scroll navigation button to display full menu options -->
         <a href="#menu" class="btn btn-primary" id="hero-btn-menu">VIEW MENU</a>
+        <!-- Scroll navigation button to display founding story -->
         <a href="#story" class="btn btn-outline" id="hero-btn-story">OUR STORY</a>
       </div>
     </div>
+    
+    <!-- Animated scroll helper indicator situated at bottom center of hero section -->
     <div class="scroll-indicator" id="scroll-indicator">
       <span class="scroll-text">SCROLL TO HEARTH</span>
       <div class="scroll-arrow"></div>
     </div>
   </section>
 
-  <!-- Intro: Crafted with Fire & Passion Section -->
+  <!-- ==========================================================================
+       Introductory Section (Brand values and culinary style explanation)
+       ========================================================================== -->
   <section class="intro-section section-padding scroll-section" id="intro" data-theme="light">
     <div class="container grid-2">
+      <!-- Left Column: Narrative description text block with entrance animation wrapper class -->
       <div class="intro-text-block reveal-left">
         <span class="section-tagline">AUTHENTIC COOKING</span>
         <h2 class="section-title">CRAFTED WITH FIRE &amp; PASSION</h2>
         <p class="section-desc">At Pepper by Pats, we believe that great food starts with simple, high-quality ingredients and the ancient art of wood-fire cooking. Our sourdough is naturally fermented for 48 hours, resulting in a light, airy crust with a signature char.</p>
         <p class="section-desc">Combined with our house-made sauces and locally sourced toppings, every bite is a celebration of flavor, smoke, and texture.</p>
       </div>
+      
+      <!-- Right Column: Visual illustration block displaying sourdough pizza preparation -->
       <div class="intro-image-block reveal-right">
+        <!-- Overflow hidden frame for custom vertical parallax shifts on scroll -->
         <div class="image-wrapper rounded-lg">
           <img src="assets/spicy_pat_pizza.png" alt="Slicing fresh sourdough pizza" class="parallax-img">
         </div>
@@ -74,60 +107,69 @@
     </div>
   </section>
 
-  <!-- Interactive Pick Me Pizza Wheel Section -->
+  <!-- ==========================================================================
+       Interactive Pizza Spinning Wheel Section (Engaging gamification module)
+       ========================================================================== -->
   <section class="pickme-section section-padding scroll-section" id="pickme" data-theme="dark">
     <div class="container grid-2 align-center">
+      <!-- Left Column: Interactive canvas component with custom pointer indicator -->
       <div class="wheel-visual-block reveal-left">
         <div class="wheel-outer-container">
+          <!-- Static triangle pointer marker designating the winning slice at top center (12 o'clock) -->
           <div class="wheel-pointer" id="wheel-pointer"></div>
+          <!-- Outer border ring wrapper holding the HTML5 canvas wheel component -->
           <div class="wheel-canvas-container">
             <canvas id="pizza-wheel" width="450" height="450"></canvas>
           </div>
+          <!-- Trigger button to start rotation animation sequence -->
           <button class="spin-btn" id="spin-btn">SPIN NOW</button>
         </div>
       </div>
+      
+      <!-- Right Column: Text description, result output, and coupon display card -->
       <div class="wheel-text-block reveal-right">
         <span class="section-tagline color-amber">PICK ME</span>
         <h2 class="section-title color-white">CAN'T DECIDE?<br>LET US PICK FOR YOU!</h2>
         <p class="section-desc color-gray">Click the button to spin the pizza wheel and let fate decide your next slice! Spin and unlock a special discount code for your order.</p>
         
-        <!-- Selection Popup Result Inside the Card -->
+        <!-- Results panel transitioning into view with active details once spin animation stops -->
         <div class="wheel-result-card" id="wheel-result-card">
           <div class="result-card-inner">
             <div class="result-header">
+              <!-- Dynamically populated recommended dish name -->
               <h4 class="result-title" id="result-pizza-name">Spinning...</h4>
+              <!-- Dynamically populated price tag of the selected food item -->
               <span class="result-price" id="result-pizza-price">Rs. 0</span>
             </div>
+            <!-- Dynamically populated ingredients details list -->
             <p class="result-desc" id="result-pizza-desc">Your pizza recommendation will appear here.</p>
-            <!--
-            <div class="coupon-box" id="coupon-box">
-              <span class="coupon-label">YOUR DISCOUNT CODE:</span>
-              <div class="coupon-row">
-                <code class="coupon-code" id="coupon-code-text">FIRSTSLICE</code>
-                <button class="copy-coupon-btn" id="copy-coupon-btn">COPY</button>
-              </div>
-            </div>
-            -->
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Signature Creations Section -->
+  <!-- ==========================================================================
+       Signature Creations Showcase Section (Popular menu items)
+       ========================================================================== -->
   <section class="signature-section section-padding scroll-section" id="signature" data-theme="light">
     <div class="container">
+      <!-- Centered Section heading labels -->
       <div class="section-header text-center">
         <span class="section-tagline">CHEF'S SELECTIONS</span>
         <h2 class="section-title">SIGNATURE CREATIONS</h2>
         <p class="section-lead">A selection of our most popular wood-fired pizzas, fresh from the oven.</p>
       </div>
+      
+      <!-- Three-column layout displaying individual product cards with entrance animations -->
       <div class="grid-3 card-grid" id="signature-grid">
-        <!-- Card 1 -->
+        
+        <!-- Signature Card 1: The Spicy Pat -->
         <div class="card-reveal">
           <div class="pizza-card">
             <div class="card-image-container">
               <img src="assets/spicy_pat_pizza.png" alt="The Spicy Pat pizza" class="card-img">
+              <!-- Label tag marking characteristic flavor -->
               <span class="card-tag">SPICY</span>
             </div>
             <div class="card-body">
@@ -140,11 +182,13 @@
             </div>
           </div>
         </div>
-        <!-- Card 2 -->
+        
+        <!-- Signature Card 2: Truffle Mushroom -->
         <div class="card-reveal">
           <div class="pizza-card">
             <div class="card-image-container">
               <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Mushroom pizza" class="card-img">
+              <!-- Label tag marking dietary option -->
               <span class="card-tag">VEGETARIAN</span>
             </div>
             <div class="card-body">
@@ -157,11 +201,13 @@
             </div>
           </div>
         </div>
-        <!-- Card 3 -->
+        
+        <!-- Signature Card 3: Classic Margherita -->
         <div class="card-reveal">
           <div class="pizza-card">
             <div class="card-image-container">
               <img src="assets/margherita_pizza.png" alt="Classic Margherita pizza" class="card-img">
+              <!-- Label tag marking traditional recipe category -->
               <span class="card-tag">CLASSIC</span>
             </div>
             <div class="card-body">
@@ -174,14 +220,19 @@
             </div>
           </div>
         </div>
+        
       </div>
+      
+      <!-- Call to Action button pointing to complete product details -->
       <div class="text-center mt-48">
         <a href="#menu" class="btn btn-primary">VIEW FULL MENU</a>
       </div>
     </div>
   </section>
 
-  <!-- Our Story Section -->
+  <!-- ==========================================================================
+       Our Story & Founder Details Section (Editorial content block)
+       ========================================================================== -->
   <section class="story-section section-padding scroll-section" id="story" data-theme="light">
     <div class="container">
       <div class="section-header text-center">
@@ -190,7 +241,7 @@
         <p class="section-lead">The journey of bringing authentic culinary warmth to the city of Kandy.</p>
       </div>
       
-      <!-- Story Block 1 -->
+      <!-- Narrative Block 1: Left aligned description text, right aligned graphic details -->
       <div class="grid-2 align-center story-row">
         <div class="story-text reveal-left">
           <h3 class="story-heading">FROM A SPARK TO A FLAME</h3>
@@ -204,7 +255,7 @@
         </div>
       </div>
 
-      <!-- Story Block 2 -->
+      <!-- Narrative Block 2: Inverted columns layout (Right text, Left image frame) -->
       <div class="grid-2 align-center story-row invert-grid">
         <div class="story-image reveal-left">
           <div class="image-wrapper rounded-lg">
@@ -218,12 +269,15 @@
         </div>
       </div>
 
-      <!-- Meet the Craftsmen -->
+      <!-- Section detailing profiles of the kitchen staff -->
       <div class="craftsmen-section mt-80">
         <h3 class="story-heading text-center mb-16">MEET THE CRAFTSMEN</h3>
         <p class="section-desc text-center max-w-600 mx-auto mb-48">Led by Pat, our team of passionate chefs is dedicated to preserving the art of traditional cooking. From hand-stretching the dough to monitoring the flames, we pour our hearts into every dish we serve.</p>
+        
+        <!-- Two-column grid displaying chef highlight profiles -->
         <div class="grid-2 chef-grid card-grid">
-          <!-- Chef 1 -->
+          
+          <!-- Chef Profile 1: Pat -->
           <div class="card-reveal">
             <div class="chef-card">
               <div class="chef-image-container">
@@ -235,7 +289,8 @@
               </div>
             </div>
           </div>
-          <!-- Chef 2 -->
+          
+          <!-- Chef Profile 2: Sadin -->
           <div class="card-reveal">
             <div class="chef-card">
               <div class="chef-image-container">
@@ -247,10 +302,11 @@
               </div>
             </div>
           </div>
+          
         </div>
       </div>
 
-      <!-- CTA Box -->
+      <!-- CTA Box promoting table bookings at the bottom of the founding story -->
       <div class="story-cta-box text-center mt-80 rounded-lg reveal-up">
         <h3 class="cta-box-title">EXPERIENCE THE WARMTH</h3>
         <p class="cta-box-desc">Join us for a dining experience that is both intimate and unforgettable. Book your table today.</p>
@@ -259,7 +315,9 @@
     </div>
   </section>
 
-  <!-- Complete Menu Section -->
+  <!-- ==========================================================================
+       Complete Menu Section (Supports tab filter sorting and dual view layout switching)
+       ========================================================================== -->
   <section class="menu-section section-padding scroll-section" id="menu" data-theme="light">
     <div class="container">
       <div class="section-header text-center">
@@ -268,8 +326,9 @@
         <p class="section-lead">Explore our selection of pizzas, sides, desserts, and beverages.</p>
       </div>
 
-      <!-- Filter and View Controls -->
+      <!-- Menu Navigation Bar containing tabs and interactive layout view switches -->
       <div class="menu-controls-bar">
+        <!-- Horizontal scrolling menu category filter tabs -->
         <div class="menu-tabs-wrapper">
           <ul class="menu-tabs" id="menu-tabs">
             <li class="tab-item active" data-filter="all">ALL</li>
@@ -280,6 +339,7 @@
           </ul>
         </div>
         
+        <!-- Toggle button configuration for layout selection (Photo cards grid vs. Classic text list) -->
         <div class="view-toggle-wrapper">
           <span class="toggle-label">Classic View</span>
           <button class="view-toggle-btn" id="view-toggle" aria-label="Toggle menu layout view">
@@ -289,10 +349,13 @@
         </div>
       </div>
 
-      <!-- Photo Grid View -->
+      <!-- ======================================================================
+           Layout Panel A: Photo Grid View (Active layout on default page load)
+           ====================================================================== -->
       <div class="menu-view-container active-view" id="menu-photo-view">
         <div class="grid-3 card-grid" id="menu-photo-grid">
-          <!-- Pizzas -->
+          
+          <!-- Product Card: Classic Margherita -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
               <img src="assets/margherita_pizza.png" alt="Classic Margherita" class="item-img">
@@ -306,6 +369,7 @@
             </div>
           </div>
 
+          <!-- Product Card: The Spicy Pat -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
               <img src="assets/spicy_pat_pizza.png" alt="The Spicy Pat" class="item-img">
@@ -319,6 +383,7 @@
             </div>
           </div>
 
+          <!-- Product Card: Truffle Mushroom -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
               <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Mushroom" class="item-img">
@@ -332,6 +397,7 @@
             </div>
           </div>
 
+          <!-- Product Card: Quattro Formaggi -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
               <img src="assets/margherita_pizza.png" alt="Quattro Formaggi" class="item-img">
@@ -345,6 +411,7 @@
             </div>
           </div>
 
+          <!-- Product Card: Pepperoni Classic -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
               <img src="assets/spicy_pat_pizza.png" alt="Pepperoni Classic" class="item-img">
@@ -358,6 +425,7 @@
             </div>
           </div>
 
+          <!-- Product Card: Smoky BBQ Chicken -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
               <img src="assets/hero_background.png" alt="Smoky BBQ Chicken" class="item-img">
@@ -371,7 +439,7 @@
             </div>
           </div>
 
-          <!-- Sides -->
+          <!-- Sides Card: Fire-Roasted Chicken Wings -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
               <img src="assets/chicken_wings.png" alt="Fire-Roasted Chicken Wings" class="item-img">
@@ -385,6 +453,7 @@
             </div>
           </div>
 
+          <!-- Sides Card: Garlic Sourdough Bread -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
               <img src="assets/garlic_sourdough.png" alt="Garlic Sourdough Bread" class="item-img">
@@ -398,6 +467,7 @@
             </div>
           </div>
 
+          <!-- Sides Card: Truffle Parmesan Fries -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
               <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Parmesan Fries" class="item-img">
@@ -411,6 +481,7 @@
             </div>
           </div>
 
+          <!-- Sides Card: Wood-Fired Vegetables -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
               <img src="assets/hero_background.png" alt="Wood-Fired Vegetables" class="item-img">
@@ -424,7 +495,7 @@
             </div>
           </div>
 
-          <!-- Desserts -->
+          <!-- Dessert Card: Chocolate Fudge Cake -->
           <div class="menu-item-card" data-category="desserts">
             <div class="item-img-wrapper">
               <img src="assets/chocolate_cake.png" alt="Chocolate Fudge Cake" class="item-img">
@@ -438,6 +509,7 @@
             </div>
           </div>
 
+          <!-- Dessert Card: Tiramisu -->
           <div class="menu-item-card" data-category="desserts">
             <div class="item-img-wrapper">
               <img src="assets/tiramisu.png" alt="Tiramisu" class="item-img">
@@ -451,6 +523,7 @@
             </div>
           </div>
 
+          <!-- Dessert Card: Affogato al Caffe -->
           <div class="menu-item-card" data-category="desserts">
             <div class="item-img-wrapper">
               <img src="assets/chocolate_cake.png" alt="Affogato al Caffe" class="item-img">
@@ -464,7 +537,7 @@
             </div>
           </div>
 
-          <!-- Beverages -->
+          <!-- Beverage Card: Passion Fruit Mojito -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
               <img src="assets/mojito.png" alt="Passion Fruit Mojito" class="item-img">
@@ -478,6 +551,7 @@
             </div>
           </div>
 
+          <!-- Beverage Card: Iced Coffee Latte -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
               <img src="assets/iced_latte.png" alt="Iced Coffee Latte" class="item-img">
@@ -491,6 +565,7 @@
             </div>
           </div>
 
+          <!-- Beverage Card: Peach Iced Tea -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
               <img src="assets/mojito.png" alt="Peach Iced Tea" class="item-img">
@@ -504,6 +579,7 @@
             </div>
           </div>
 
+          <!-- Beverage Card: Mineral Water -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
               <img src="assets/iced_latte.png" alt="Mineral Water" class="item-img">
@@ -519,19 +595,23 @@
         </div>
       </div>
 
-      <!-- Classic Text View -->
+      <!-- ======================================================================
+           Layout Panel B: Classic Text View (Minimalist layout, toggled via JS switch)
+           ====================================================================== -->
       <div class="menu-view-container" id="menu-classic-view">
         <div class="grid-2 text-menu-grid">
-          <!-- Left Column -->
+          
+          <!-- Left Column layout block -->
           <div class="text-menu-column">
-            <!-- Pizzas Group -->
+            
+            <!-- Classic Group: Pizzas -->
             <div class="menu-group" data-category="pizzas">
               <h3 class="menu-group-heading">WOOD-FIRED PIZZAS</h3>
               
               <div class="classic-menu-item">
                 <div class="classic-item-row">
                   <span class="classic-item-title">Classic Margherita</span>
-                  <span class="classic-item-dots"></span>
+                  <span class="classic-item-dots"></span> <!-- Repeating dot filler -->
                   <span class="classic-item-price">Rs. 1,950</span>
                 </div>
                 <p class="classic-item-desc">San Marzano tomato sauce, fresh mozzarella, extra virgin olive oil, and fresh basil.</p>
@@ -583,7 +663,7 @@
               </div>
             </div>
 
-            <!-- Desserts Group -->
+            <!-- Classic Group: Desserts -->
             <div class="menu-group" data-category="desserts">
               <h3 class="menu-group-heading">DESSERTS</h3>
               
@@ -616,9 +696,10 @@
             </div>
           </div>
 
-          <!-- Right Column -->
+          <!-- Right Column layout block -->
           <div class="text-menu-column">
-            <!-- Sides Group -->
+            
+            <!-- Classic Group: Sides -->
             <div class="menu-group" data-category="sides">
               <h3 class="menu-group-heading">ARTISANAL SIDES</h3>
               
@@ -659,7 +740,7 @@
               </div>
             </div>
 
-            <!-- Beverages Group -->
+            <!-- Classic Group: Beverages -->
             <div class="menu-group" data-category="beverages">
               <h3 class="menu-group-heading">BEVERAGES</h3>
               
@@ -700,12 +781,15 @@
               </div>
             </div>
           </div>
+          
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Offers Section -->
+  <!-- ==========================================================================
+       Offers & Promo Section (Promotional packages and newsletter signup form)
+       ========================================================================== -->
   <section class="offers-section section-padding scroll-section" id="offers" data-theme="dark">
     <div class="container">
       <div class="section-header text-center">
@@ -714,8 +798,10 @@
         <p class="section-lead color-gray">Indulge in our custom promotions and curated feast packs.</p>
       </div>
 
+      <!-- Two-column grid displaying promo deal cards -->
       <div class="grid-2 card-grid">
-        <!-- Offer 1 -->
+        
+        <!-- Promo Card 1: Midweek Special -->
         <div class="card-reveal">
           <div class="offer-card">
             <span class="offer-badge">WEEKDAY SPECIAL</span>
@@ -724,7 +810,8 @@
             <a href="#locations" class="btn btn-primary offer-btn">CLAIM OFFER</a>
           </div>
         </div>
-        <!-- Offer 2 -->
+        
+        <!-- Promo Card 2: Weekend Combo -->
         <div class="card-reveal">
           <div class="offer-card">
             <span class="offer-badge">WEEKEND COMBO</span>
@@ -733,7 +820,8 @@
             <a href="#locations" class="btn btn-primary offer-btn">CLAIM BUNDLE</a>
           </div>
         </div>
-        <!-- Offer 3 -->
+        
+        <!-- Promo Card 3: New User Offer -->
         <div class="card-reveal">
           <div class="offer-card">
             <span class="offer-badge">NEW USER EXCLUSIVE</span>
@@ -742,7 +830,8 @@
             <a href="#locations" class="btn btn-primary offer-btn">REDEEM NOW</a>
           </div>
         </div>
-        <!-- Offer 4 -->
+        
+        <!-- Promo Card 4: Happy Hour Mojitos -->
         <div class="card-reveal">
           <div class="offer-card">
             <span class="offer-badge">HAPPY HOUR</span>
@@ -751,9 +840,10 @@
             <a href="#locations" class="btn btn-primary offer-btn">CLAIM OFFER</a>
           </div>
         </div>
+        
       </div>
 
-      <!-- Newsletter Box -->
+      <!-- Newsletter subscription form block -->
       <div class="newsletter-box mt-80 rounded-lg text-center reveal-up">
         <h3 class="newsletter-title">STAY UPDATED WITH FIRE DEALS</h3>
         <p class="newsletter-desc">Subscribe to our newsletter to receive the latest offers, new menu launches, and exclusive events info straight to your inbox.</p>
@@ -765,7 +855,9 @@
     </div>
   </section>
 
-  <!-- Locations & Contact Section -->
+  <!-- ==========================================================================
+       Locations & Contact Section (Visual details mapping to physical addresses)
+       ========================================================================== -->
   <section class="locations-section section-padding scroll-section" id="locations" data-theme="light">
     <div class="container">
       <div class="section-header text-center">
@@ -774,11 +866,14 @@
         <p class="section-lead">Find us in the heart of Kandy, or order online to enjoy the fire at home.</p>
       </div>
 
-      <!-- Contact Info & Map -->
+      <!-- Contact details details and map layout row -->
       <div class="grid-2 align-center locations-map-row reveal-up">
+        <!-- Address lists -->
         <div class="location-details">
           <h3 class="location-heading">VISIT OUR HEARTH</h3>
+          
           <div class="info-list">
+            
             <div class="info-item">
               <span class="info-icon">📍</span>
               <div>
@@ -786,6 +881,7 @@
                 <p>45, Temple Road, Kandy</p>
               </div>
             </div>
+            
             <div class="info-item">
               <span class="info-icon">🕒</span>
               <div>
@@ -793,6 +889,7 @@
                 <p>Mon - Sun: 11:30 AM - 10:30 PM</p>
               </div>
             </div>
+            
             <div class="info-item">
               <span class="info-icon">📞</span>
               <div>
@@ -800,6 +897,7 @@
                 <p><a href="tel:+94812234567" class="hover-underline">+94 81 223 4567</a></p>
               </div>
             </div>
+            
             <div class="info-item">
               <span class="info-icon">✉️</span>
               <div>
@@ -807,9 +905,12 @@
                 <p><a href="mailto:hello@pepperbypats.lk" class="hover-underline">hello@pepperbypats.lk</a></p>
               </div>
             </div>
+            
           </div>
           <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" class="btn btn-primary mt-32">GET DIRECTIONS</a>
         </div>
+        
+        <!-- Illustration Map container -->
         <div class="location-map">
           <div class="image-wrapper rounded-lg shadow-ambient">
             <img src="assets/kandy_map.png" alt="Map of Kandy Sri Lanka pointing to Pepper by Pats">
@@ -817,11 +918,13 @@
         </div>
       </div>
 
-      <!-- Contact Form -->
+      <!-- Customer Contact booking form container -->
       <div class="contact-form-container mt-80 rounded-lg reveal-up">
         <h3 class="form-heading text-center">GET IN TOUCH</h3>
         <p class="form-subheading text-center max-w-600 mx-auto">Have a question, feedback, or a large event inquiry? Send us a message and we'll get back to you shortly.</p>
+        
         <form class="contact-form" id="contact-form" onsubmit="event.preventDefault(); alert('Message sent successfully! We will contact you soon.'); this.reset();">
+          
           <div class="form-row grid-2">
             <div class="form-group">
               <label for="contact-name">YOUR NAME</label>
@@ -832,6 +935,7 @@
               <input type="email" id="contact-email" class="form-input" placeholder="john@example.com" required>
             </div>
           </div>
+          
           <div class="form-row grid-2">
             <div class="form-group">
               <label for="contact-phone">PHONE NUMBER</label>
@@ -848,25 +952,33 @@
               </select>
             </div>
           </div>
+          
           <div class="form-group">
             <label for="contact-message">YOUR MESSAGE</label>
             <textarea id="contact-message" class="form-input textarea-input" placeholder="Write your message here..." rows="5" required></textarea>
           </div>
+          
           <div class="text-center">
             <button type="submit" class="btn btn-primary form-submit-btn">SEND MESSAGE</button>
           </div>
+          
         </form>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- ==========================================================================
+       Page Footer Section (Copyright & Social Links navigation)
+       ========================================================================== -->
   <footer class="main-footer" id="main-footer">
     <div class="container footer-grid">
+      <!-- Footer Branding description -->
       <div class="footer-brand">
         <h4 class="footer-logo">PEPPER BY PATS</h4>
         <p class="footer-desc">Artisanal wood-fired pizzas, slow-roasted meats, and signature cocktails in the heart of Kandy.</p>
       </div>
+      
+      <!-- Footer navigation links column -->
       <div class="footer-links">
         <h4 class="footer-heading">QUICK LINKS</h4>
         <ul class="footer-nav">
@@ -876,6 +988,8 @@
           <li><a href="#locations">Locations</a></li>
         </ul>
       </div>
+      
+      <!-- Footer social networking links column -->
       <div class="footer-social">
         <h4 class="footer-heading">FOLLOW US</h4>
         <div class="social-icons">
@@ -891,16 +1005,24 @@
         </div>
       </div>
     </div>
+    
+    <!-- Footer bottom section containing copyright statement -->
     <div class="footer-bottom text-center">
       <p>&copy; 2024 Pepper by Pats. All rights reserved. | <a href="#" class="hover-underline">Privacy Policy</a> | <a href="#" class="hover-underline">Terms of Service</a></p>
     </div>
   </footer>
 
-  <!-- Animation Libraries (CDN) -->
+  <!-- ==========================================================================
+       JavaScript Libraries Imports (CDN)
+       ========================================================================== -->
+  <!-- GSAP core animation platform library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <!-- ScrollTrigger GSAP plugin to trigger animations relative to scroll position -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scrolling library -->
   <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
-  <!-- Custom Logic JS -->
+  
+  <!-- Custom Client-Side Application logic script -->
   <script src="app.js?v=4"></script>
 </body>
 </html>
