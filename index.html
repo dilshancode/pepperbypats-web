@@ -32,7 +32,7 @@
       </a>
       
       <!-- Hamburger navigation button visible on mobile viewport sizes (screen width < 768px) -->
-      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu">
+      <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-menu">
         <span></span> <!-- Hamburger horizontal line 1 -->
         <span></span> <!-- Hamburger horizontal line 2 -->
         <span></span> <!-- Hamburger horizontal line 3 -->
@@ -60,7 +60,7 @@
     <!-- Background layer wrapper handling zoom/parallax transitions -->
     <div class="hero-bg-container">
       <!-- Wood-fired oven illustration banner image -->
-      <img src="assets/hero_background.png" alt="Wood-fired oven glowing embers" class="hero-bg-image" id="hero-bg-img">
+      <img src="assets/hero_background.webp" alt="Wood-fired oven glowing embers" class="hero-bg-image" id="hero-bg-img">
       <!-- Black radial overlay shading layer to optimize text readability -->
       <div class="hero-overlay"></div>
     </div>
@@ -101,7 +101,7 @@
       <div class="intro-image-block reveal-right">
         <!-- Overflow hidden frame for custom vertical parallax shifts on scroll -->
         <div class="image-wrapper rounded-lg">
-          <img src="assets/spicy_pat_pizza.png" alt="Slicing fresh sourdough pizza" class="parallax-img">
+          <img src="assets/spicy_pat_pizza.webp" alt="Slicing fresh sourdough pizza" class="parallax-img" loading="lazy">
         </div>
       </div>
     </div>
@@ -168,7 +168,7 @@
         <div class="card-reveal">
           <div class="pizza-card">
             <div class="card-image-container">
-              <img src="assets/spicy_pat_pizza.png" alt="The Spicy Pat pizza" class="card-img">
+              <img src="assets/spicy_pat_pizza.webp" alt="The Spicy Pat pizza" class="card-img" loading="lazy">
               <!-- Label tag marking characteristic flavor -->
               <span class="card-tag">SPICY</span>
             </div>
@@ -187,7 +187,7 @@
         <div class="card-reveal">
           <div class="pizza-card">
             <div class="card-image-container">
-              <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Mushroom pizza" class="card-img">
+              <img src="assets/truffle_mushroom_pizza.webp" alt="Truffle Mushroom pizza" class="card-img" loading="lazy">
               <!-- Label tag marking dietary option -->
               <span class="card-tag">VEGETARIAN</span>
             </div>
@@ -206,7 +206,7 @@
         <div class="card-reveal">
           <div class="pizza-card">
             <div class="card-image-container">
-              <img src="assets/margherita_pizza.png" alt="Classic Margherita pizza" class="card-img">
+              <img src="assets/margherita_pizza.webp" alt="Classic Margherita pizza" class="card-img" loading="lazy">
               <!-- Label tag marking traditional recipe category -->
               <span class="card-tag">CLASSIC</span>
             </div>
@@ -250,7 +250,7 @@
         </div>
         <div class="story-image reveal-right">
           <div class="image-wrapper rounded-lg">
-            <img src="assets/margherita_pizza.png" alt="Artisanal pizza ingredients" class="parallax-img">
+            <img src="assets/margherita_pizza.webp" alt="Artisanal pizza ingredients" class="parallax-img" loading="lazy">
           </div>
         </div>
       </div>
@@ -259,7 +259,7 @@
       <div class="grid-2 align-center story-row invert-grid">
         <div class="story-image reveal-left">
           <div class="image-wrapper rounded-lg">
-            <img src="assets/hero_background.png" alt="Wood-fired oven close up" class="parallax-img">
+            <img src="assets/hero_background.webp" alt="Wood-fired oven close up" class="parallax-img" loading="lazy">
           </div>
         </div>
         <div class="story-text reveal-right">
@@ -281,7 +281,7 @@
           <div class="card-reveal">
             <div class="chef-card">
               <div class="chef-image-container">
-                <img src="assets/chef_pat.png" alt="Head Chef Pat" class="chef-img">
+                <img src="assets/chef_pat.webp" alt="Head Chef Pat" class="chef-img" loading="lazy">
               </div>
               <div class="chef-info">
                 <h4 class="chef-name">PAT</h4>
@@ -294,7 +294,7 @@
           <div class="card-reveal">
             <div class="chef-card">
               <div class="chef-image-container">
-                <img src="assets/chef_sadin.png" alt="Sous Chef Sadin" class="chef-img">
+                <img src="assets/chef_sadin.webp" alt="Sous Chef Sadin" class="chef-img" loading="lazy">
               </div>
               <div class="chef-info">
                 <h4 class="chef-name">SADIN</h4>
@@ -330,19 +330,19 @@
       <div class="menu-controls-bar">
         <!-- Horizontal scrolling menu category filter tabs -->
         <div class="menu-tabs-wrapper">
-          <ul class="menu-tabs" id="menu-tabs">
-            <li class="tab-item active" data-filter="all">ALL</li>
-            <li class="tab-item" data-filter="pizzas">WOOD-FIRED PIZZAS</li>
-            <li class="tab-item" data-filter="sides">ARTISANAL SIDES</li>
-            <li class="tab-item" data-filter="desserts">DESSERTS</li>
-            <li class="tab-item" data-filter="beverages">BEVERAGES</li>
+          <ul class="menu-tabs" id="menu-tabs" role="tablist" aria-label="Menu category filters">
+            <li class="tab-item active" data-filter="all" role="tab" aria-selected="true" tabindex="0">ALL</li>
+            <li class="tab-item" data-filter="pizzas" role="tab" aria-selected="false" tabindex="0">WOOD-FIRED PIZZAS</li>
+            <li class="tab-item" data-filter="sides" role="tab" aria-selected="false" tabindex="0">ARTISANAL SIDES</li>
+            <li class="tab-item" data-filter="desserts" role="tab" aria-selected="false" tabindex="0">DESSERTS</li>
+            <li class="tab-item" data-filter="beverages" role="tab" aria-selected="false" tabindex="0">BEVERAGES</li>
           </ul>
         </div>
         
         <!-- Toggle button configuration for layout selection (Photo cards grid vs. Classic text list) -->
         <div class="view-toggle-wrapper">
           <span class="toggle-label">Classic View</span>
-          <button class="view-toggle-btn" id="view-toggle" aria-label="Toggle menu layout view">
+          <button class="view-toggle-btn" id="view-toggle" aria-label="Toggle menu layout view" aria-pressed="false">
             <span class="toggle-slider"></span>
           </button>
           <span class="toggle-label active">Photo View</span>
@@ -358,7 +358,7 @@
           <!-- Product Card: Classic Margherita -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
-              <img src="assets/margherita_pizza.png" alt="Classic Margherita" class="item-img">
+              <img src="assets/margherita_pizza.webp" alt="Classic Margherita" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -372,7 +372,7 @@
           <!-- Product Card: The Spicy Pat -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
-              <img src="assets/spicy_pat_pizza.png" alt="The Spicy Pat" class="item-img">
+              <img src="assets/spicy_pat_pizza.webp" alt="The Spicy Pat" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -386,7 +386,7 @@
           <!-- Product Card: Truffle Mushroom -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
-              <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Mushroom" class="item-img">
+              <img src="assets/truffle_mushroom_pizza.webp" alt="Truffle Mushroom" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -400,7 +400,7 @@
           <!-- Product Card: Quattro Formaggi -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
-              <img src="assets/margherita_pizza.png" alt="Quattro Formaggi" class="item-img">
+              <img src="assets/margherita_pizza.webp" alt="Quattro Formaggi" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -414,7 +414,7 @@
           <!-- Product Card: Pepperoni Classic -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
-              <img src="assets/spicy_pat_pizza.png" alt="Pepperoni Classic" class="item-img">
+              <img src="assets/spicy_pat_pizza.webp" alt="Pepperoni Classic" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -428,7 +428,7 @@
           <!-- Product Card: Smoky BBQ Chicken -->
           <div class="menu-item-card" data-category="pizzas">
             <div class="item-img-wrapper">
-              <img src="assets/hero_background.png" alt="Smoky BBQ Chicken" class="item-img">
+              <img src="assets/hero_background.webp" alt="Smoky BBQ Chicken" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -442,7 +442,7 @@
           <!-- Sides Card: Fire-Roasted Chicken Wings -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
-              <img src="assets/chicken_wings.png" alt="Fire-Roasted Chicken Wings" class="item-img">
+              <img src="assets/chicken_wings.webp" alt="Fire-Roasted Chicken Wings" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -456,7 +456,7 @@
           <!-- Sides Card: Garlic Sourdough Bread -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
-              <img src="assets/garlic_sourdough.png" alt="Garlic Sourdough Bread" class="item-img">
+              <img src="assets/garlic_sourdough.webp" alt="Garlic Sourdough Bread" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -470,7 +470,7 @@
           <!-- Sides Card: Truffle Parmesan Fries -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
-              <img src="assets/truffle_mushroom_pizza.png" alt="Truffle Parmesan Fries" class="item-img">
+              <img src="assets/truffle_mushroom_pizza.webp" alt="Truffle Parmesan Fries" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -484,7 +484,7 @@
           <!-- Sides Card: Wood-Fired Vegetables -->
           <div class="menu-item-card" data-category="sides">
             <div class="item-img-wrapper">
-              <img src="assets/hero_background.png" alt="Wood-Fired Vegetables" class="item-img">
+              <img src="assets/hero_background.webp" alt="Wood-Fired Vegetables" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -498,7 +498,7 @@
           <!-- Dessert Card: Chocolate Fudge Cake -->
           <div class="menu-item-card" data-category="desserts">
             <div class="item-img-wrapper">
-              <img src="assets/chocolate_cake.png" alt="Chocolate Fudge Cake" class="item-img">
+              <img src="assets/chocolate_cake.webp" alt="Chocolate Fudge Cake" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -512,7 +512,7 @@
           <!-- Dessert Card: Tiramisu -->
           <div class="menu-item-card" data-category="desserts">
             <div class="item-img-wrapper">
-              <img src="assets/tiramisu.png" alt="Tiramisu" class="item-img">
+              <img src="assets/tiramisu.webp" alt="Tiramisu" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -526,7 +526,7 @@
           <!-- Dessert Card: Affogato al Caffe -->
           <div class="menu-item-card" data-category="desserts">
             <div class="item-img-wrapper">
-              <img src="assets/chocolate_cake.png" alt="Affogato al Caffe" class="item-img">
+              <img src="assets/chocolate_cake.webp" alt="Affogato al Caffe" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -540,7 +540,7 @@
           <!-- Beverage Card: Passion Fruit Mojito -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
-              <img src="assets/mojito.png" alt="Passion Fruit Mojito" class="item-img">
+              <img src="assets/mojito.webp" alt="Passion Fruit Mojito" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -554,7 +554,7 @@
           <!-- Beverage Card: Iced Coffee Latte -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
-              <img src="assets/iced_latte.png" alt="Iced Coffee Latte" class="item-img">
+              <img src="assets/iced_latte.webp" alt="Iced Coffee Latte" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -568,7 +568,7 @@
           <!-- Beverage Card: Peach Iced Tea -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
-              <img src="assets/mojito.png" alt="Peach Iced Tea" class="item-img">
+              <img src="assets/mojito.webp" alt="Peach Iced Tea" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -582,7 +582,7 @@
           <!-- Beverage Card: Mineral Water -->
           <div class="menu-item-card" data-category="beverages">
             <div class="item-img-wrapper">
-              <img src="assets/iced_latte.png" alt="Mineral Water" class="item-img">
+              <img src="assets/iced_latte.webp" alt="Mineral Water" class="item-img" loading="lazy">
             </div>
             <div class="item-card-body">
               <div class="item-card-header">
@@ -913,7 +913,7 @@
         <!-- Illustration Map container -->
         <div class="location-map">
           <div class="image-wrapper rounded-lg shadow-ambient">
-            <img src="assets/kandy_map.png" alt="Map of Kandy Sri Lanka pointing to Pepper by Pats">
+            <img src="assets/kandy_map.webp" alt="Map of Kandy Sri Lanka pointing to Pepper by Pats" loading="lazy">
           </div>
         </div>
       </div>

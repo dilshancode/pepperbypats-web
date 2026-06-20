@@ -120,6 +120,8 @@ document.addEventListener('DOMContentLoaded', () => {
     navMenu.classList.add('active');
     // Add 'open' class to transform the hamburger lines into an 'X'
     mobileNavToggle.classList.add('open');
+    // Update ARIA expanded state to true
+    mobileNavToggle.setAttribute('aria-expanded', 'true');
     // Pause Lenis smooth scrolling so user cannot scroll the background page while menu is open
     lenis.stop();
   }
@@ -130,6 +132,8 @@ document.addEventListener('DOMContentLoaded', () => {
     navMenu.classList.remove('active');
     // Remove 'open' class to revert the hamburger icon back to three horizontal lines
     mobileNavToggle.classList.remove('open');
+    // Update ARIA expanded state to false
+    mobileNavToggle.setAttribute('aria-expanded', 'false');
     // Resume Lenis smooth scrolling for normal page interaction
     lenis.start();
   }
@@ -712,11 +716,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Loop through filter tab nodes and bind click behaviors
   filterTabs.forEach(tab => {
+    // Click event to update filter results and ARIA tags
     tab.addEventListener('click', () => {
-      // Remove 'active' selection class from all tabs
-      filterTabs.forEach(t => t.classList.remove('active'));
-      // Add 'active' class to current tab to update underline position
+      // Remove 'active' selection class and disable ARIA selection state on all tabs
+      filterTabs.forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-selected', 'false');
+      });
+      // Add 'active' class to current tab to update underline position and set ARIA selected true
       tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
 
       // Get category filter target string value from tab data attribute
       const filterVal = tab.getAttribute('data-filter');
@@ -774,6 +783,14 @@ document.addEventListener('DOMContentLoaded', () => {
         ScrollTrigger.refresh();
       }, 500);
     });
+
+    // Keyboard support: listen for Enter and Space key presses when tab has focus
+    tab.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        tab.click();
+      }
+    });
   });
 
   // Add click event listener to layout view toggle switch
@@ -784,6 +801,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isClassic) {
       // Revert back to photo card layout view
       viewToggleBtn.classList.remove('toggled');
+      viewToggleBtn.setAttribute('aria-pressed', 'false');
       classicViewContainer.classList.remove('active-view');
       photoViewContainer.classList.add('active-view');
       
@@ -793,6 +811,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // Switch layout to classic text list view
       viewToggleBtn.classList.add('toggled');
+      viewToggleBtn.setAttribute('aria-pressed', 'true');
       photoViewContainer.classList.remove('active-view');
       classicViewContainer.classList.add('active-view');
       

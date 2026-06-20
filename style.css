@@ -1640,6 +1640,26 @@ body.theme-dark .form-input:focus {
 }
 
 /* ==========================================================================
+   Performance and Accessibility Additions
+   ========================================================================== */
+
+/* GPU Hardware Acceleration hints for elements handled by GSAP/Parallax */
+.reveal-left, .reveal-right, .reveal-up, .card-reveal, .parallax-img, .hero-bg-image {
+  will-change: transform, opacity;
+}
+
+/* Keyboard focus ring outlines for custom tabs */
+.tab-item:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+body.theme-dark .tab-item:focus-visible {
+  outline: 2px solid var(--color-amber-glow);
+}
+
+/* ==========================================================================
    Responsiveness & Mobile layouts (Media queries)
    ========================================================================== */
 
