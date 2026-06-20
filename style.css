@@ -1563,12 +1563,8 @@ body.theme-dark .form-input:focus {
   font-size: 22px;
   font-weight: 800;
   letter-spacing: 0.05em;
-  color: var(--color-primary);
+  color: var(--color-amber-glow);            /* Always use amber glow since the footer background is always dark charcoal, ensuring high contrast */
   margin-bottom: 16px;
-}
-
-body.theme-dark .footer-logo {
-  color: var(--color-amber-glow);
 }
 
 .footer-desc {
