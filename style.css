@@ -278,7 +278,6 @@ body.theme-dark .section-desc {
 /* Hover effects for primary button */
 .btn-primary:hover {
   background-color: var(--color-deep-crimson);/* Shift to darker red */
-  transform: translateY(-2px);               /* Translate up slightly */
   box-shadow: 0 6px 20px rgba(104, 0, 6, 0.3);/* Intense shadow on hover */
 }
 
@@ -292,7 +291,6 @@ body.theme-dark .section-desc {
 .btn-outline:hover {
   background-color: #ffffff;
   color: var(--color-charcoal);
-  transform: translateY(-2px);
 }
 
 /* ==========================================================================
@@ -463,16 +461,7 @@ body.theme-dark .main-header.scrolled .nav-link:hover {
 
 .nav-cta-btn:hover {
   background-color: var(--color-deep-crimson);
-  animation: premium-bounce 0.6s ease;
   box-shadow: 0 4px 15px rgba(104, 0, 6, 0.4);
-}
-
-@keyframes premium-bounce {
-  0% { transform: scale(1); }
-  30% { transform: scale(1.08) translateY(-3px); }
-  50% { transform: scale(0.96) translateY(1px); }
-  75% { transform: scale(1.02) translateY(-1px); }
-  100% { transform: scale(1); }
 }
 
 /* Hamburger button icon representing menu drawer toggle on small displays */

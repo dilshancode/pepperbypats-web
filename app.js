@@ -279,8 +279,16 @@ document.addEventListener('DOMContentLoaded', () => {
   if (navListItems.length > 0) heroTL.from(navListItems, { opacity: 0, y: -10, stagger: 0.1 }, '-=0.8');
   // If the header action button exists, scale it up and fade in smoothly
   if (navCtaBtn) heroTL.from(navCtaBtn, { opacity: 0, scale: 0.9 }, '-=0.6');
-  // If the scroll indicator exists, slide it up slightly and fade it in at the end
-  if (scrollIndicator) heroTL.from(scrollIndicator, { opacity: 0, y: 10 }, '-=0.4');
+  // Animate the scroll indicator independently so it appears faster (at 1.0s delay instead of waiting for timeline to finish)
+  if (scrollIndicator) {
+    gsap.from(scrollIndicator, {
+      opacity: 0,
+      y: 10,
+      duration: 1.2,
+      delay: 1.0,
+      ease: 'power4.out'
+    });
+  }
 
   // Retrieve the background image element of the hero section
   const heroBgImg = document.getElementById('hero-bg-img');
@@ -636,14 +644,10 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Check if the discount coupon code node is available in the DOM
     if (couponText) {
-      // Map custom code names depending on which item won the spin selection
-      if (item.name === "THE SPICY PAT") {
-        couponText.innerText = "HOTPAT15";
-      } else if (item.name === "TRUFFLE MUSHROOM") {
-        couponText.innerText = "TRUFFLE10";
-      } else {
-        couponText.innerText = "FIRSTSLICE";
-      }
+      // Generate a dynamic random coupon code: Prefix from item name + random 6-character alphanumeric string
+      const prefix = item.name.replace(/[^A-Z0-9]/gi, '').substring(0, 5).toUpperCase();
+      const randomStr = Math.random().toString(36).substring(2, 8).toUpperCase();
+      couponText.innerText = `${prefix}-${randomStr}`;
     }
     
     // Add active class to transition result card into view (opacity, translate properties)
