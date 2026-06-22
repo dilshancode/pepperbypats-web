@@ -11,39 +11,59 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   
   // Initialize the Lenis smooth scrolling library with custom configuration options
-  const lenis = new Lenis({
-    // Duration of the scroll animation in seconds
-    duration: 1.2,
-    // Easing function for smooth acceleration and deceleration (exponential out easing)
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
-    // Enable smooth scrolling on the mouse wheel input
-    smoothWheel: true,
-    // Multiplier to adjust touch scroll sensitivity
-    touchMultiplier: 2,
-    // Disable infinite looping of scroll
-    infinite: false,
-  });
+  // Wrapped in try-catch to gracefully handle CDN load failures (e.g. file:// protocol, network issues)
+  let lenis;
+  try {
+    lenis = new Lenis({
+      // Duration of the scroll animation in seconds
+      duration: 1.2,
+      // Easing function for smooth acceleration and deceleration (exponential out easing)
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), 
+      // Enable smooth scrolling on the mouse wheel input
+      smoothWheel: true,
+      // Multiplier to adjust touch scroll sensitivity
+      touchMultiplier: 2,
+      // Disable infinite looping of scroll
+      infinite: false,
+    });
 
-  // Define the requestAnimationFrame callback loop to update Lenis scrolling smoothly
-  function raf(time) {
-    // Notify Lenis to process and update the scroll position based on current time
-    lenis.raf(time);
-    // Recursively request the next animation frame to keep the scroll loop running
+    // Define the requestAnimationFrame callback loop to update Lenis scrolling smoothly
+    function raf(time) {
+      // Notify Lenis to process and update the scroll position based on current time
+      lenis.raf(time);
+      // Recursively request the next animation frame to keep the scroll loop running
+      requestAnimationFrame(raf);
+    }
+    // Start the smooth scrolling animation frame loop
     requestAnimationFrame(raf);
+
+    // Synchronize GSAP's ScrollTrigger with the Lenis smooth scroll update event
+    lenis.on('scroll', ScrollTrigger.update);
+
+    // Add Lenis update handler to GSAP's global ticker loop for perfect animation synchronization
+    gsap.ticker.add((time) => {
+      // Pass elapsed time in milliseconds to Lenis
+      lenis.raf(time * 1000);
+    });
+    // Disable lag smoothing in GSAP to prevent synchronization drift between scroll and animations
+    gsap.ticker.lagSmoothing(0);
+  } catch (e) {
+    // Lenis library failed to load — provide a minimal fallback so the rest of the script runs
+    console.warn('Lenis smooth scroll library failed to initialize. Falling back to native scroll.', e);
+    lenis = {
+      raf: function() {},
+      on: function() {},
+      scrollTo: function(target, options) {
+        // Fallback: use native smooth scrolling
+        var el = (typeof target === 'string') ? document.querySelector(target) : target;
+        if (el && el.scrollIntoView) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      },
+      stop: function() {},
+      start: function() {},
+    };
   }
-  // Start the smooth scrolling animation frame loop
-  requestAnimationFrame(raf);
-
-  // Synchronize GSAP's ScrollTrigger with the Lenis smooth scroll update event
-  lenis.on('scroll', ScrollTrigger.update);
-
-  // Add Lenis update handler to GSAP's global ticker loop for perfect animation synchronization
-  gsap.ticker.add((time) => {
-    // Pass elapsed time in milliseconds to Lenis
-    lenis.raf(time * 1000);
-  });
-  // Disable lag smoothing in GSAP to prevent synchronization drift between scroll and animations
-  gsap.ticker.lagSmoothing(0);
 
   // Select all anchor links whose href starts with '#' and set up smooth scrolling to their targets
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -87,6 +107,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Get the navigation menu container element that slides in on mobile devices
   const navMenu = document.getElementById('nav-menu');
 
+  // Select the scroll progress indicator element
+  const scrollProgressBar = document.getElementById('header-scroll-progress');
+
   // Add an event listener to the window object to monitor scroll activity
   window.addEventListener('scroll', () => {
     // If the vertical scroll position is greater than 50 pixels
@@ -96,6 +119,16 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       // Remove the 'scrolled' class to restore the header to its transparent state
       header.classList.remove('scrolled');
+    }
+
+    // Calculate document scroll percentage progress
+    if (scrollProgressBar) {
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight - windowHeight;
+      if (documentHeight > 0) {
+        const scrollPercent = (window.scrollY / documentHeight) * 100;
+        scrollProgressBar.style.width = `${scrollPercent}%`;
+      }
     }
     
     // Call the function to highlight the active section's nav link in the header
@@ -241,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // If hero buttons exist, animate them sliding up in a staggered succession
   if (heroBtns.length > 0) heroTL.from(heroBtns, { y: 20, opacity: 0, stagger: 0.15 }, '-=0.8');
   // If nav logo exists, animate it fading in and sliding from left side
-  if (logoNav) heroTL.from(logoNav, { opacity: 0, x: -30 }, '-=1');
+  if (logoNav) heroTL.from(logoNav, { opacity: 0, x: -30, immediateRender: false }, '-=1');
   // If navigation list items exist, stagger their drop down and fade in
   if (navListItems.length > 0) heroTL.from(navListItems, { opacity: 0, y: -10, stagger: 0.1 }, '-=0.8');
   // If the header action button exists, scale it up and fade in smoothly
@@ -825,4 +858,90 @@ document.addEventListener('DOMContentLoaded', () => {
       ScrollTrigger.refresh();
     }, 100);
   });
+
+  // Magnetic Button Effect: CTA buttons gravitate towards the mouse cursor on hover
+  const magneticButtons = document.querySelectorAll('.nav-cta-btn, .hero-actions .btn, .btn-primary');
+  
+  magneticButtons.forEach(btn => {
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      // Calculate cursor position relative to the center of the button
+      const x = e.clientX - rect.left - (rect.width / 2);
+      const y = e.clientY - rect.top - (rect.height / 2);
+      
+      // Pull strength factor (0.35 is perfect for a subtle magnetic feel)
+      gsap.to(btn, {
+        x: x * 0.35,
+        y: y * 0.35,
+        duration: 0.3,
+        ease: 'power2.out'
+      });
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+      // Elastic spring back to center
+      gsap.to(btn, {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+        ease: 'power3.out'
+      });
+    });
+  });
+
+  // Custom Cursor Followers Logic
+  const cursorFollower = document.getElementById('custom-cursor-follower');
+  const cursorDot = document.getElementById('custom-cursor-dot');
+  
+  if (cursorFollower && cursorDot) {
+    // Only initialize and track if the device supports fine pointer events (hover/mouse)
+    if (window.matchMedia('(pointer: fine)').matches) {
+      // Variables to store mouse position and lagging cursor position
+      let mouseX = 0, mouseY = 0;
+      let followerX = 0, followerY = 0;
+      
+      window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Instantly position the inner tiny dot
+        gsap.set(cursorDot, { x: mouseX, y: mouseY });
+      });
+      
+      // Use GSAP ticker or a custom loop for a smooth lagging follower effect
+      gsap.ticker.add(() => {
+        // Inertia formula (lag factor: 0.15)
+        followerX += (mouseX - followerX) * 0.15;
+        followerY += (mouseY - followerY) * 0.15;
+        
+        gsap.set(cursorFollower, { x: followerX, y: followerY });
+      });
+      
+      // Hover hoverable elements to expand the outer ring follower
+      const hoverables = document.querySelectorAll('a, button, .tab-item, .view-toggle, .spin-btn, input, textarea');
+      hoverables.forEach(el => {
+        el.addEventListener('mouseenter', () => {
+          cursorFollower.classList.add('hovered');
+        });
+        el.addEventListener('mouseleave', () => {
+          cursorFollower.classList.remove('hovered');
+        });
+      });
+      
+      // Hide cursor elements when leaving the window bounds
+      document.addEventListener('mouseleave', () => {
+        cursorFollower.style.opacity = '0';
+        cursorDot.style.opacity = '0';
+      });
+      
+      document.addEventListener('mouseenter', () => {
+        cursorFollower.style.opacity = '1';
+        cursorDot.style.opacity = '1';
+      });
+    } else {
+      // Remove elements if touch-only screen to prevent DOM clutter
+      cursorFollower.remove();
+      cursorDot.remove();
+    }
+  }
 });

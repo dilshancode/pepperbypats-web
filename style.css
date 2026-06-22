@@ -263,7 +263,7 @@ body.theme-dark .section-desc {
   border-radius: var(--radius-default);
   cursor: pointer;
   /* Smooth transitions for interactive state changes */
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: background-color 0.3s cubic-bezier(0.25, 1, 0.5, 1), color 0.3s cubic-bezier(0.25, 1, 0.5, 1), transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   border: 2px solid transparent;
   outline: none;
 }
@@ -325,6 +325,26 @@ body.theme-dark .main-header.scrolled {
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
+/* Scroll progress tracking bar at the bottom edge of sticky header */
+.header-scroll-progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.main-header.scrolled .header-scroll-progress {
+  opacity: 1;
+}
+
+body.theme-dark .main-header.scrolled .header-scroll-progress {
+  background-color: var(--color-amber-glow);
+}
+
 /* Horizontal align row for nav items */
 .nav-container {
   display: flex;
@@ -368,20 +388,45 @@ body.theme-dark .main-header.scrolled .logo-text {
 
 /* Navigation items styling */
 .nav-link {
+  position: relative;
+  display: inline-block;
   font-family: var(--font-headline);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: rgba(255, 255, 255, 0.8);
+  padding: 4px 0;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #ffffff;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .nav-link:hover, .nav-link.active {
   color: #ffffff;                            /* Full bright link color on hover/active highlights */
 }
 
+.nav-link:hover::after, .nav-link.active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 /* Update nav links color when navbar switches to scroll mode (light theme) */
 .main-header.scrolled .nav-link {
   color: var(--color-on-surface-variant);
+}
+
+.main-header.scrolled .nav-link::after {
+  background-color: var(--color-primary);
 }
 
 .main-header.scrolled .nav-link:hover, 
@@ -392,6 +437,10 @@ body.theme-dark .main-header.scrolled .logo-text {
 /* Update nav links color when navbar switches to scroll mode (dark theme) */
 body.theme-dark .main-header.scrolled .nav-link {
   color: #ebe8e2;
+}
+
+body.theme-dark .main-header.scrolled .nav-link::after {
+  background-color: var(--color-amber-glow);
 }
 
 body.theme-dark .main-header.scrolled .nav-link:hover {
@@ -409,12 +458,21 @@ body.theme-dark .main-header.scrolled .nav-link:hover {
   border-radius: var(--radius-default);
   background-color: var(--color-primary);
   color: #ffffff;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .nav-cta-btn:hover {
   background-color: var(--color-deep-crimson);
-  transform: translateY(-1px);
+  animation: premium-bounce 0.6s ease;
+  box-shadow: 0 4px 15px rgba(104, 0, 6, 0.4);
+}
+
+@keyframes premium-bounce {
+  0% { transform: scale(1); }
+  30% { transform: scale(1.08) translateY(-3px); }
+  50% { transform: scale(0.96) translateY(1px); }
+  75% { transform: scale(1.02) translateY(-1px); }
+  100% { transform: scale(1); }
 }
 
 /* Hamburger button icon representing menu drawer toggle on small displays */
@@ -770,17 +828,24 @@ body.theme-dark .main-header.scrolled .mobile-nav-toggle span {
 
 /* Product items grid cards */
 .pizza-card {
+  position: relative;
   background-color: var(--color-cream-surface);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-ambient);
-  transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   border: 1px solid rgba(0, 0, 0, 0.02);
 }
 
 .pizza-card:hover {
   transform: translateY(-8px);               /* Translate card upwards on hover */
-  box-shadow: var(--shadow-hover);           /* Soften and expand shadow */
+  box-shadow: 0 20px 40px rgba(104, 0, 6, 0.08), 0 0 15px rgba(104, 0, 6, 0.04);
+  border-color: rgba(104, 0, 6, 0.15);
+}
+
+body.theme-dark .pizza-card:hover {
+  box-shadow: 0 20px 40px rgba(242, 201, 76, 0.08), 0 0 15px rgba(242, 201, 76, 0.04);
+  border-color: rgba(242, 201, 76, 0.25);
 }
 
 /* Clip bounds for zoom interactions on images */
@@ -1809,5 +1874,66 @@ body.theme-dark .tab-item:focus-visible {
 
   .footer-brand {
     grid-column: span 1;
+  }
+}
+
+/* ==========================================================================
+   Custom Premium Cursor Styles
+   ========================================================================== */
+@media (pointer: fine) {
+  /* Hide standard cursor only on devices with mouse pointer */
+  body, a, button, input, select, textarea, .tab-item {
+    cursor: none !important;
+  }
+  
+  .custom-cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 36px;
+    height: 36px;
+    border: 2px solid var(--color-primary);
+    background-color: rgba(104, 0, 6, 0.05);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 99999;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.1s ease;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+  }
+
+  body.theme-dark .custom-cursor-follower {
+    border-color: var(--color-amber-glow);
+    background-color: rgba(242, 201, 76, 0.05);
+  }
+
+  .custom-cursor-follower.hovered {
+    width: 56px;
+    height: 56px;
+    background-color: rgba(104, 0, 6, 0.12);
+    border-color: var(--color-deep-crimson);
+  }
+
+  body.theme-dark .custom-cursor-follower.hovered {
+    background-color: rgba(242, 201, 76, 0.18);
+    border-color: var(--color-amber-glow);
+  }
+
+  .custom-cursor-dot {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 8px;
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 100000;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3));
+  }
+
+  body.theme-dark .custom-cursor-dot {
+    background-color: var(--color-amber-glow);
   }
 }
