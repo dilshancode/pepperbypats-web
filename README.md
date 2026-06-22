@@ -10,6 +10,21 @@ An elegant, interactive web presence for **Pepper by Pats**, Kandy's premier art
 *   **Theme Controls & Visuals:** Designed with smooth transitions, responsive grid layouts, and custom parallax background effects.
 *   **Fully Responsive:** optimized for mobile, tablet, and desktop viewing.
 
+## 📸 Preview & Screenshots
+
+### Desktop Hero Section
+![Pepper by Pats Hero Section](screenshots/hero_desktop.png)
+
+### Interactive Pizza Wheel
+![Pizza Spin Wheel Feature](screenshots/pizza_wheel.png)
+
+### Dynamic Menu Views (Photo Grid vs. Classic List)
+
+<p align="center">
+  <img src="screenshots/menu_photo.png" width="49%" alt="Photo View Grid" />
+  <img src="screenshots/menu_classic.png" width="49%" alt="Classic View List" />
+</p>
+
 ## 🛠️ Project Structure
 
 The project structure is organized as follows:
